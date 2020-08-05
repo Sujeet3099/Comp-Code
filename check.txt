@@ -1,0 +1,6 @@
+Always see tha value is initialised or not,  as its garbage may spoil your code output;
+Aways check your if and else if is covering every scenario;
+always check that all the value declared for taking input are getting input and at the right place and time;
+Check for the type conversions....make sure ll is assigned to ll and no int;
+Check whether tsking floor or ceil value after dividing with float number
+Before submitting always check the format of the output and the number of test case issue
