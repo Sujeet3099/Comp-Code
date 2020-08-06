@@ -64,36 +64,3 @@ int main(){
  */
 // 4 3
 // 1 7 2 4
-// #include<bits/stdc++.h>
-// using namespace std;
-// #define ll long long
-// #define fi first
-// #define se second
-// int main()
-// {
-//     ll n,k,j,max1=0,max2=0;
-//     cin>>n>>k;
-//     map <ll,ll> maps;
-//     for(ll i=0;i<n;i++)
-//     {
-//         cin>>j;
-//         maps[j%k]++;
-//     }
-//     // for(auto i:maps)
-//     // 	cout<<i.first<<" "<<i.second<<endl;
-//     for(auto itr1=maps.begin();itr1!=maps.end();itr1++)
-//     {
-//         auto itr2=maps.find(k-itr1->fi);
-//         if(itr2!=maps.end())
-//         {
-//             if(itr1->fi==itr2->fi) max2++;
-//             else if(itr1->se>itr2->se) max1+=itr1->se;
-//             else max1+=itr2->se;
-//         }
-//         else if((itr1->fi*2)%k==0) max2++;
-//         else max2+=itr1->se;
-//     }
-//     // cout<<max1<<" "<<max2<<endl;
-//     cout<<max1/2+max2;
-//     return 0;
-// }
