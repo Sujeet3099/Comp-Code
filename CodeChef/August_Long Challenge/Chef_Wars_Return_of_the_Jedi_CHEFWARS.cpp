@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   Bigger is Greater
- * link          :   https://www.hackerrank.com/challenges/bigger-is-greater/problem
+ * question name :   Chef Wars - Return of the Jedi Problem Code: CHEFWARS
+ * link          :   https://www.codechef.com/AUG20B/problems/CHEFWARS
  */
 
 #define ll long long
@@ -20,19 +20,20 @@ using namespace std;
 #define vll(n) vector<ll> v(n);
 #define vi2(n,m) vector<vector<int> > v(n,vector<int>(m));
 
-string solve(){
-	string s;
-	cin>>s;
-	int t = next_permutation(all(s));
-	// char temp;
-	// per(i,0,n-1){
-	// 	if(s[i]<s[i-1]){
-	// 		temp = s[i];
-	// 	}
-	// }
-	if(t == 0)
-		s = "no answer";
-	return s;
+int solve(){
+	int h,p;
+	cin>>h>>p;
+	int temp = ceil(log2(p)),res = 0;
+	while(p){
+		h -= p;
+		p /= 2;
+		if(h <= 0){
+			res = 1;
+			break;
+		}
+		// cout<<h<<" "<<p<<endl;
+	}
+	return res;
 }
 
 int main(){
@@ -48,9 +49,6 @@ int main(){
 /**
  * Test Cases:-
  */
-// 5
-// ab
-// bb
-// hefg
-// dhck
-// dkhc
+// 2
+// 10 4
+// 10 8

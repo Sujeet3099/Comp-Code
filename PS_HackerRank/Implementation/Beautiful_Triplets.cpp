@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   Bigger is Greater
- * link          :   https://www.hackerrank.com/challenges/bigger-is-greater/problem
+ * question name :   Beautiful Triplets
+ * link          :   https://www.hackerrank.com/challenges/beautiful-triplets/problem
  */
 
 #define ll long long
@@ -20,19 +20,13 @@ using namespace std;
 #define vll(n) vector<ll> v(n);
 #define vi2(n,m) vector<vector<int> > v(n,vector<int>(m));
 
-string solve(){
-	string s;
-	cin>>s;
-	int t = next_permutation(all(s));
-	// char temp;
-	// per(i,0,n-1){
-	// 	if(s[i]<s[i-1]){
-	// 		temp = s[i];
-	// 	}
-	// }
-	if(t == 0)
-		s = "no answer";
-	return s;
+int solve(){
+	int n,d;
+	vi(n);
+	rep(i,0,n)
+		cin>>v[i];
+	// rep(i,0,k
+	return 0;
 }
 
 int main(){
@@ -48,9 +42,3 @@ int main(){
 /**
  * Test Cases:-
  */
-// 5
-// ab
-// bb
-// hefg
-// dhck
-// dkhc

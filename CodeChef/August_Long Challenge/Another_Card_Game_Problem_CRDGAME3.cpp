@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   Bigger is Greater
- * link          :   https://www.hackerrank.com/challenges/bigger-is-greater/problem
+ * question name :   Another Card Game Problem Problem Code: CRDGAME3
+ * link          :   https://www.codechef.com/AUG20B/problems/CRDGAME3
  */
 
 #define ll long long
@@ -20,19 +20,29 @@ using namespace std;
 #define vll(n) vector<ll> v(n);
 #define vi2(n,m) vector<vector<int> > v(n,vector<int>(m));
 
-string solve(){
-	string s;
-	cin>>s;
-	int t = next_permutation(all(s));
-	// char temp;
-	// per(i,0,n-1){
-	// 	if(s[i]<s[i-1]){
-	// 		temp = s[i];
-	// 	}
-	// }
-	if(t == 0)
-		s = "no answer";
-	return s;
+int solve(){
+	int pr,pc,chef,rick,remc,remp,remres,result;
+	cin>>pc>>pr;
+	if(pc<=9 && pr<=9){
+		result = 1;
+		remres = 1;
+	}
+	else{
+		remc = ceil(pc/9.0);
+		remp = ceil(pr/9.0);
+		// cout<<pc<<"<>"<<pr<<endl;
+		// cout<<remc<<" == "<<remp<<endl;
+		if(remc>remp){
+			result = 1;
+			remres = remp;
+		}
+		else{
+			result = 0;
+			remres = remc;
+		}
+	}
+	cout<<result<<" "<<remres<<endl;
+	return 0;
 }
 
 int main(){
@@ -41,16 +51,15 @@ int main(){
 	ll test = 1;
 	cin>>test;
 	while(test--){
-		cout<<solve()<<endl;
+		// cout<<solve()<<endl;
+		solve();
 	}
 	return 0;
 }
 /**
  * Test Cases:-
  */
-// 5
-// ab
-// bb
-// hefg
-// dhck
-// dkhc
+// 3
+// 3 5
+// 28 18
+// 14 24
