@@ -30,6 +30,16 @@ int func2(int n){
 	}
 	return 0;
 }
+void print(int n){
+	if(n==1){
+		cout<<n<<" ";
+		return;
+	}
+	else{
+		print(n-1);
+		cout<<n<<" ";
+	}
+}
 
 int main(){
 	ios_base::sync_with_stdio(false);
@@ -43,6 +53,8 @@ int main(){
 	cout<<endl;
 	// printf("\n");
 	func2(n);
+	cout<<endl;
+	print(n);
 	
 	clock_t end=clock();
 	cerr<<fixed<<setprecision(10)<<((double)(end-start))/CLOCKS_PER_SEC<<endl;
