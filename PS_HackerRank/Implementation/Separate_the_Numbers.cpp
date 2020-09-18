@@ -20,24 +20,69 @@ using namespace std;
 #define vll(n) vector<ll> v(n);
 #define vi2(n,m) vector<vector<int> > v(n,vector<int>(m));
 
-int solve(){
-	string s;
+void solve(){
+	string s,temp1,temp2;
 	cin>>s;
-	string temp1 = "",temp2 = "";
 	int n = s.size();
-	int k = 1,first = 0,second = 0;
-	for(int i = 0; i < n; i++){
-		temp1 += s[i];
-		temp2 = s[i+1];
-		first = stoi(temp1);
-		second = stoi(temp2);
-		if(abs(first-second) == 1){
+	if(n<=1){
+		cout<<"NO"<<endl;
+		return;
+	}
+	ll n1=0,i=1,j=1;
+	bool chk = false;
+	while(1){
+		temp1 = s.substr(n1,i);
+		temp2 = s.substr(temp1.size(),j);
+		// cout<<temp1<<' '<<temp2<<endl;
+		ll a = stoll(temp2);
+		ll b =  stoll(temp1);
+		if( a - b == 1 ){
+			chk = true;
+			n1 = b;
 			break;
 		}
+		else{
+			if(i>=ceil(n/2.0))	break;
+			if(i == j)	j++;
+			else	i++;
+		}
 	}
-	k = temp1.size();
-	cout<<temp1<<endl;
-	return 0;
+	cout<<n1<<endl;
+	if(chk){
+		ll first = n1;
+		bool res = true;
+		ll p = temp1.size();
+		string temp3;
+		for (int i = p; i < n; i+=p){
+			temp2 = s.substr(i,p);
+			ll a = stoll(temp2);
+			if(a-n1 == 1 && temp2[0]!='0'){
+				n1 = a;
+				continue;
+			}
+			else{
+				p++;
+				if(i+p>n){
+					cout<<"NO"<<endl;
+					return;
+				}	
+				temp3 = s.substr(i,p);
+				ll b = stoll(temp3);
+				if(b-n1 == 1 && temp3[0]!='0'){
+					n1 = b;
+					continue;
+				}
+				else{
+					cout<<"NO"<<endl;
+					return;
+				}
+			}
+		}
+		if(res)	cout<<"YES "<<first<<endl;
+		else	cout<<"NO"<<endl;
+	}
+	else	cout<<"NO"<<endl;
+	return;
 }
 int main(){
 	ios_base::sync_with_stdio(false);
@@ -45,7 +90,7 @@ int main(){
 	ll test = 1;
 	cin>>test;
 	while(test--){
-		cout<<solve()<<endl;
+		solve();
 	}
 	return 0;
 }

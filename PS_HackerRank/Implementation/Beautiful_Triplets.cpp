@@ -20,25 +20,41 @@ using namespace std;
 #define vll(n) vector<ll> v(n);
 #define vi2(n,m) vector<vector<int> > v(n,vector<int>(m));
 
-int solve(){
-	int n,d;
+void solve(){
+	int n,d;cin>>n>>d;
 	vi(n);
-	rep(i,0,n)
+	set<int> s;
+	rep(i,0,n){
 		cin>>v[i];
-	// rep(i,0,k
-	return 0;
+		s.insert(v[i]);
+	}
+	int i = 0;
+	int limit = v[n-1],count = 0;
+	while(i<n){
+		int t1,t2,t3;
+		t1 = v[i];
+		t2 = t1+d;
+		t3 = t2+d;
+		if(t3 > limit || i>=n)	break;
+		if(s.find(t2)!=s.end() && s.find(t3)!=s.end())	count++;
+		i++;
+	}
+	cout<<count<<endl;
+	return;
 }
 
 int main(){
 	ios_base::sync_with_stdio(false);
     cin.tie(NULL),cout.tie(NULL);
 	ll test = 1;
-	cin>>test;
+	// cin>>test;
 	while(test--){
-		cout<<solve()<<endl;
+		solve();
 	}
 	return 0;
 }
 /**
  * Test Cases:-
  */
+// 7 3
+// 1 2 4 5 7 8 10
