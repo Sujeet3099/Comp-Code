@@ -15,7 +15,7 @@ using namespace std;
 #define fi first
 #define se second
 #define all(x) (x).begin(),(x).end()
-#define rep(i,a,n) for (ll i=a;i<n;i++)
+#define rep(i,a,n) for (ll i=a;i<=n;i++)
 #define repA(i,v) for(auto i:v)
 #define per(i,a,n) for (ll i=n-1;i>=a;i--)
 #define vi vector<int>
@@ -27,24 +27,16 @@ ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 
 void solve(){
 	int n;cin>>n;
-	string s;cin>>s;
-	vi v(n+1);
-	rep(i,0,n){
-		v[i+1]=(int)s[i]-48;
+	vector<int> v;
+	int temp = n;
+	int res = 0,i = 1;
+	while(1){
+		if(temp%i==0)	res+=((temp/i)-1);
+		else	res+=(temp/i);
+		i++;
+		if(temp/i<=0)	break;
 	}
-	int even = 0,odd = 0;
-	vector<int> ev,od;
-	rep(i,1,n){
-		if(i%2!=0 && v[i]%2==0){
-			ev.pb(i);
-			even++;
-		}
-		else if(i%2==0 && v[i]%2!=0){
-			od.pb(i);
-			odd++;
-		}
-	}
-	
+	cout<<res<<endl;
 	return ;
 }
 
@@ -54,7 +46,7 @@ int main(){
     clock_t start=clock();
 
 	ll test = 1;
-	cin>>test;
+	// cin>>test;
 	while(test--)	solve();
 
 	clock_t end=clock();

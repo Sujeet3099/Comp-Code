@@ -26,25 +26,11 @@ ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 
 
 void solve(){
-	int n;cin>>n;
 	string s;cin>>s;
-	vi v(n+1);
-	rep(i,0,n){
-		v[i+1]=(int)s[i]-48;
-	}
-	int even = 0,odd = 0;
-	vector<int> ev,od;
-	rep(i,1,n){
-		if(i%2!=0 && v[i]%2==0){
-			ev.pb(i);
-			even++;
-		}
-		else if(i%2==0 && v[i]%2!=0){
-			od.pb(i);
-			odd++;
-		}
-	}
-	
+	int n = s.size();
+	if(s[n-1]=='s')	s+="es";
+	else	s+='s';
+	cout<<s<<endl;
 	return ;
 }
 
@@ -54,7 +40,7 @@ int main(){
     clock_t start=clock();
 
 	ll test = 1;
-	cin>>test;
+	// cin>>test;
 	while(test--)	solve();
 
 	clock_t end=clock();
