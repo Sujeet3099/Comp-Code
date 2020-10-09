@@ -1,0 +1,65 @@
+#include"bits/stdc++.h"
+using namespace std;
+
+/**
+ * Copyright (c)
+ * author        :   Sujeet Kumar 
+ * question name :   
+ * link          :   
+ */
+
+#define ll long long
+#define ull unsigned long long
+#define pb push_back
+#define mp make_pair
+#define fi first
+#define se second
+#define all(x) (x).begin(),(x).end()
+#define rep(i,a,n) for (ll i=a;i<n;i++)
+#define repA(i,v) for(auto i:v)
+#define per(i,a,n) for (ll i=n-1;i>=a;i--)
+#define vi vector<int>
+#define vll vector<ll>
+#define vi2(n,m) vector<vector<int> > v(n,vector<int>(m));
+ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
+{if(y&1) res=(res*x)%p;y=y>>1; x=(x*x)%p;}return res;}
+
+
+void solve(){
+	int n;cin>>n;
+	vi v(n+1),p(n+1,0),s(n+1,0);
+	int sums = 0,sump = 0;
+	rep(i,1,n+1)	cin>>v[i];
+	rep(i,1,n+1){
+		sums+=v[i];
+		if(i>=2)	s[i-1]=sums;
+	}
+	per(i,1,n+1){
+		sump+=v[i];
+		if(i<=n)	p[i-1]=sump;
+	}
+	repA(i,s)	cout<<i<<' ';
+	cout<<endl;
+	repA(i,p)	cout<<i<<' ';
+	cout<<endl;
+	// if(sumss>=sum && sum>=0)	cout<<"YES"<<endl;
+	// else	cout<<"NO"<<endl;
+	return ;
+}
+
+int main(){
+	ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    clock_t start=clock();
+
+	ll test = 1;
+	cin>>test;
+	while(test--)	solve();
+
+	clock_t end=clock();
+	cerr<<fixed<<setprecision(15)<<((double)(end-start))/CLOCKS_PER_SEC<<endl;
+	return 0;
+}
+/**
+ * Test Cases:-
+ */
