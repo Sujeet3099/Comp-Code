@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   Cyclic Binary String
- * link          :   https://www.hackerrank.com/contests/hackerrank-hackfest-2020/challenges/cyclic-binary-string/problem
+ * question name :   Lonely Integer
+ * link          :   https://www.hackerrank.com/challenges/lonely-integer/problem
  */
 
 #define ll long long
@@ -26,29 +26,27 @@ ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 
 
 void solve(){
-	string s;cin>>s;
-	int mx1 = 0,c = 0,mx2 = 0;
-	bool flow = false,det = false;
-	int i = 0;
-	bool karo = false;
-	rep(i,0,s.size())	if(s[i]=='1')	karo = true;
-
-	while((s[0]=='0' || s[s.size()-1]=='0') && karo == true){
-		s.erase(s.begin()+0);
-		s+="0";
-		if(s[0]=='1' || s[s.size()-1]=='1')	break;
-	}
-	rep(i,0,s.size()){
-		if(flow){
-			if(s[i]=='0')	c++;
-			else	flow = false,mx2++;			
-		}
-		else if(s[i]=='0' && flow == false)	c = 0,c++,flow = true ;
-		else	mx2++;
-		mx1 = max(c,mx1);
-	}
-	if(mx2==0)	cout<<-1<<endl;
-	else	cout<<mx1<<endl;
+	int n;cin>>n;
+	vi v(n);
+	rep(i,0,n)	cin>>v[i];
+	// bool flow = true;
+	// rep(i,0,n){
+	// 	flow = true;
+	// 	rep(j,0,n){
+	// 		if( ((v[i] ^ v[j]) == 0) && i!=j){
+	// 			flow = false;
+	// 			break;
+	// 		}
+	// 	}
+	// 	if(flow){
+	// 		cout<<v[i];
+	// 		return;
+	// 	}
+	// }
+	// 
+	int res = 0;
+	repA(i,v)	res ^= i;
+	cout<<res;
 	return ;
 }
 
@@ -58,7 +56,7 @@ int main(){
     clock_t start=clock();
 
 	ll test = 1;
-	cin>>test;
+	// cin>>test;
 	while(test--)	solve();
 
 	clock_t end=clock();
@@ -68,4 +66,3 @@ int main(){
 /**
  * Test Cases:-
  */
-// 0011

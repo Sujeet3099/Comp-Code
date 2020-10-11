@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   Cyclic Binary String
- * link          :   https://www.hackerrank.com/contests/hackerrank-hackfest-2020/challenges/cyclic-binary-string/problem
+ * question name :   
+ * link          :   
  */
 
 #define ll long long
@@ -26,29 +26,26 @@ ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 
 
 void solve(){
-	string s;cin>>s;
-	int mx1 = 0,c = 0,mx2 = 0;
-	bool flow = false,det = false;
-	int i = 0;
-	bool karo = false;
-	rep(i,0,s.size())	if(s[i]=='1')	karo = true;
-
-	while((s[0]=='0' || s[s.size()-1]=='0') && karo == true){
-		s.erase(s.begin()+0);
-		s+="0";
-		if(s[0]=='1' || s[s.size()-1]=='1')	break;
+	int n;cin>>n;
+	vi v(n);
+	int possum = 0,negsum = 0;
+	rep(i,0,n){
+		cin>>v[i];
+		if(v[i]<0)	negsum += v[i];
+		else	possum += v[i];
 	}
-	rep(i,0,s.size()){
-		if(flow){
-			if(s[i]=='0')	c++;
-			else	flow = false,mx2++;			
+	if(abs(negsum) < possum)	sort(all(v),greater<int>());
+	else	sort(all(v));
+	int sum = 0;
+	rep(i,0,n){
+		sum += v[i];
+		if(sum==0){
+			cout<<"NO"<<endl;return;
 		}
-		else if(s[i]=='0' && flow == false)	c = 0,c++,flow = true ;
-		else	mx2++;
-		mx1 = max(c,mx1);
 	}
-	if(mx2==0)	cout<<-1<<endl;
-	else	cout<<mx1<<endl;
+	cout<<"YES"<<endl;
+	repA(i,v)	cout<<i<<' ';
+	cout<<endl;
 	return ;
 }
 
@@ -68,4 +65,3 @@ int main(){
 /**
  * Test Cases:-
  */
-// 0011

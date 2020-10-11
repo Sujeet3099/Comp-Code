@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   Cyclic Binary String
- * link          :   https://www.hackerrank.com/contests/hackerrank-hackfest-2020/challenges/cyclic-binary-string/problem
+ * question name :   
+ * link          :   
  */
 
 #define ll long long
@@ -24,32 +24,20 @@ using namespace std;
 ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 {if(y&1) res=(res*x)%p;y=y>>1; x=(x*x)%p;}return res;}
 
-
+map<int,multimap<int,int> >m;
+multimap<int,pair<int,int> >mr,mb,mg;
+set<int> rs,bs,gs;
 void solve(){
-	string s;cin>>s;
-	int mx1 = 0,c = 0,mx2 = 0;
-	bool flow = false,det = false;
-	int i = 0;
-	bool karo = false;
-	rep(i,0,s.size())	if(s[i]=='1')	karo = true;
+	int r,b,g;cin>>r>>b>>g;
 
-	while((s[0]=='0' || s[s.size()-1]=='0') && karo == true){
-		s.erase(s.begin()+0);
-		s+="0";
-		if(s[0]=='1' || s[s.size()-1]=='1')	break;
+	if( (rs.find(r)==rs.end()) || (bs.find(b)==bs.end()) || (gs.find(g) == gs.end()) ){
+		cout<<"NO"<<endl;return;
 	}
-	rep(i,0,s.size()){
-		if(flow){
-			if(s[i]=='0')	c++;
-			else	flow = false,mx2++;			
-		}
-		else if(s[i]=='0' && flow == false)	c = 0,c++,flow = true ;
-		else	mx2++;
-		mx1 = max(c,mx1);
-	}
-	if(mx2==0)	cout<<-1<<endl;
-	else	cout<<mx1<<endl;
-	return ;
+	
+
+	if(itb->se->fi)
+
+	cout<<"NO"<<endl;
 }
 
 int main(){
@@ -58,8 +46,24 @@ int main(){
     clock_t start=clock();
 
 	ll test = 1;
+	int n;cin>>n;
 	cin>>test;
-	while(test--)	solve();
+	int r,g,b;
+	while(n--){
+		cin>>r>>b>>g;
+		// m[r][b] = g;
+		rs.insert(r);
+        bs.insert(b);
+        gs.insert(g);
+        mr[r] = {b,g};
+        mb[b] = {g,r};
+        mg[g] = {r,b};
+	}
+	
+	
+	while(test--){
+		solve();
+	}
 
 	clock_t end=clock();
 	cerr<<fixed<<setprecision(15)<<((double)(end-start))/CLOCKS_PER_SEC<<endl;
@@ -68,4 +72,11 @@ int main(){
 /**
  * Test Cases:-
  */
-// 0011
+// 4 3
+// 1 1 1
+// 0 0 2
+// 5 0 0
+// 5 2 2
+// 0 0 2
+// 5 1 2
+// 5 3 2

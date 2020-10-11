@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   Cyclic Binary String
- * link          :   https://www.hackerrank.com/contests/hackerrank-hackfest-2020/challenges/cyclic-binary-string/problem
+ * question name :   
+ * link          :   
  */
 
 #define ll long long
@@ -26,29 +26,48 @@ ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 
 
 void solve(){
+	int n,k;cin>>n>>k;
 	string s;cin>>s;
-	int mx1 = 0,c = 0,mx2 = 0;
-	bool flow = false,det = false;
-	int i = 0;
-	bool karo = false;
-	rep(i,0,s.size())	if(s[i]=='1')	karo = true;
-
-	while((s[0]=='0' || s[s.size()-1]=='0') && karo == true){
-		s.erase(s.begin()+0);
-		s+="0";
-		if(s[0]=='1' || s[s.size()-1]=='1')	break;
+	bool flow = false;
+	int c = 0,mx = 0,res = 0;
+	rep(i,0,n){
+		if(s[i]=='W' && flow)	res+=2;
+		if(s[i]=='W' && flow == false)	res++,flow = true;
+		else	flow = false;
 	}
-	rep(i,0,s.size()){
-		if(flow){
-			if(s[i]=='0')	c++;
-			else	flow = false,mx2++;			
+	vi v,it;
+	flow = false;
+	rep(i,0,n){
+		if(s[i]=='W' && flow)	v.pb(-c),it.pb(-c),v.pb(1),c = 0,flow = false;
+		else if(s[i]=='W' && flow == false)	v.pb(1),c = 0;
+		if(s[i]=='L' && flow == false)	c++,flow = true;
+		else if(s[i]=='L' && flow)	c++;
+	}
+	if(flow)	v.pb(-c),it.pb(-c);
+	// repA(i,v)	cout<<i<<' ';cout<<endl;
+	// 
+	sort(all(it));
+	// repA(i,it)	cout<<i<<' ';cout<<endl;
+	repA(i,it){
+		if(v[v.size()-1]==i){
+			if(-i <= k){
+				res += (min(abs(i),k)*2) + 1;
+				k -= (-i);
+			}
+			else{
+				res += min(abs(i),k)*2;
+				k -= abs(i);
+			}
 		}
-		else if(s[i]=='0' && flow == false)	c = 0,c++,flow = true ;
-		else	mx2++;
-		mx1 = max(c,mx1);
+		else{
+			res += (min(abs(i),k)*2) + 1;
+			k -= abs(i);
+		}
+		if(k<=0)	break;
 	}
-	if(mx2==0)	cout<<-1<<endl;
-	else	cout<<mx1<<endl;
+	cout<<res<<endl;
+
+	
 	return ;
 }
 
@@ -68,4 +87,3 @@ int main(){
 /**
  * Test Cases:-
  */
-// 0011
