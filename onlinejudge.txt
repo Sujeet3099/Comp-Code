@@ -4,3 +4,54 @@
     // for writing output to output.txt
     freopen("output.txt", "w", stdout);
 #endif
+
+
+
+
+
+
+//sublime-build settings
+//save as c++.sublime-build
+
+{
+"cmd": ["g++.exe","-std=c++17", "${file}",
+ "-o", "${file_base_name}.exe", "&&" , 
+ "${file_base_name}.exe<inputf.in>outputf.in"],
+"shell":true,
+"working_dir":"$file_path",
+"selector":"source.cpp"
+}
+
+
+//auto complete 
+//save as cpp.sublime-completions
+
+{
+    "scope": "source.c++, meta.block.c++, meta.function.c++",
+
+    "completions":
+    [
+        "vector<int> ",
+        "vector<pair<int,int>> ",
+        "vector<string> ",
+        "vector<char> ",
+        "vector<bool> ",
+        "set<int> ",
+        "set<pair<int,int>> ",
+        "set<string> ",
+        "set<char> ",
+        "set<bool> ",
+        "map<int,int> ",
+        "map<string,int> ",
+        "map<int,string> ",
+        "first",
+        "second",
+        "make_pair",
+        "make_tuple",
+        "push_back",
+        "for(int ${1:i}=${2:0}; ${1:i}<${3:n}; ${1:i}++){$4}",
+        "cout.precision(8); cout<<fixed; ",
+        "cin>>", 
+        "cout<<${1:}<<'\n';",
+    ]
+}
