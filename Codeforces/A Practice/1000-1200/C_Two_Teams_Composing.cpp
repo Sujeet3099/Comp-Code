@@ -26,7 +26,17 @@ ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 
 
 void solve(){
-	
+	int n;cin>>n;
+	vi v(n);
+	map<int,int> m;
+	rep(i,0,n)	cin>>v[i],m[v[i]]++;
+	int mx = 0;
+	repA(i,m)	mx = max(i.se,mx);
+
+	if((int)m.size() == mx)	mx--;
+	mx = min((int)m.size(),mx);
+	mx = min(mx,n/2);
+	cout<<mx<<endl;
 	return ;
 }
 

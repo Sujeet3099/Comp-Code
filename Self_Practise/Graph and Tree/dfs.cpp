@@ -31,7 +31,6 @@ void dfs(int v,vector< vector<int> >&ar,vector<int>&vis){
 	vis[v] = 1;
 	repA(i,ar[v])	if(vis[i]==0)	dfs(i,ar,vis);
 	return ;
-}
 
 int main(){
 	ios_base::sync_with_stdio(false);
