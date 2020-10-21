@@ -27,19 +27,19 @@ ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 void solve(){
 	int n,m;cin>>n>>m;
 	vi v(n);
-	map<int,int> m;
-	rep(i,0,n)	cin>>v[i],m[v[i]]++;
-	vector<pair<int,int>> query(m);
+	map<int,int> mp;
+	rep(i,0,n)	cin>>v[i],mp[v[i]]++;
+	vi suffix;
+	rep(i,0,n){
+		suffix.pb(mp.size());
+		mp[v[i]]--;
+		if(mp[v[i]]==0)	mp.erase(v[i]);
+	}
 	rep(i,0,m){
 		int a;cin>>a;
-		query[i] = {a,i+1};
+		cout<<suffix[a-1]<<endl;
 	}
-	sort(all(query));
-	vector<pair<int,int>> res(m);
-	int start = 0,end = 0,cnt = 0;
-	rep(i,0,m){
-		while()
-	}
+
 	return ;
 }
 
@@ -49,7 +49,7 @@ int main(){
     clock_t start=clock();
 
 	ll test = 1;
-	cin>>test;
+	// cin>>test;
 	while(test--)	solve();
 
 	clock_t end=clock();
