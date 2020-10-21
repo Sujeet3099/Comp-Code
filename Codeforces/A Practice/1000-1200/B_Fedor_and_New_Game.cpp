@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   B. Power Sequence
- * link          :   https://codeforces.com/problemset/problem/1397/B
+ * question name :   B. Fedor and New Game
+ * link          :   https://codeforces.com/problemset/problem/467/B
  */
 
 #define ll long long
@@ -26,25 +26,23 @@ ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 
 
 void solve(){
-	ll n;cin >> n;
-	vll v(n);
-	rep(i,0,n) cin>>v[i];
-	sort(all(v));
-
-	if (n <= 2)	cout << v[0] - 1 << endl;
-	else{
-		ll ans = accumulate(v.begin(), v.end(), 0ll) - n;
-		for (int x = 1; ; ++x){
-			ll curPow = 1, curCost = 0;
-			for (int i = 0; i < n; ++i) {
-				curCost = (curCost+abs(v[i]-curPow)>=1e17?1e17:curCost+abs(v[i]-curPow));
-				curPow = (curPow*x>=1e17?1e17:curPow*x);
-			}
-			if (curPow >= 1e17 || curPow / x > ans + v[n - 1]) break;
-			ans = min(ans, curCost);
+	int n,m,k;cin>>n>>m>>k;
+	vi v(m+1);
+	rep(i,0,m+1)	cin>>v[i];
+	int fedor = v[m];
+	string fed = bitset<32>(fedor).to_string();
+	int cnt = 0,res = 0;
+	// cout<<fed<<endl;
+	rep(i,0,m){
+		string temp = bitset<32>(v[i]).to_string();
+		// cout<<temp<<endl;
+		rep(j,0,temp.size()){
+			if(fed[j]!=temp[j])	cnt++;
 		}
-		cout << ans << endl;
+		if(cnt<=k)	res++;
+		cnt = 0;
 	}
+	cout<<res<<endl;
 	return ;
 }
 
@@ -64,5 +62,3 @@ int main(){
 /**
  * Test Cases:-
  */
-// 3
-// 1000000000 1000000000 1000000000

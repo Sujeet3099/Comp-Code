@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   B. Power Sequence
- * link          :   https://codeforces.com/problemset/problem/1397/B
+ * question name :   A. Laptops
+ * link          :   https://codeforces.com/problemset/problem/456/A
  */
 
 #define ll long long
@@ -24,27 +24,22 @@ using namespace std;
 ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 {if(y&1) res=(res*x)%p;y=y>>1; x=(x*x)%p;}return res;}
 
-
 void solve(){
-	ll n;cin >> n;
-	vll v(n);
-	rep(i,0,n) cin>>v[i];
-	sort(all(v));
-
-	if (n <= 2)	cout << v[0] - 1 << endl;
-	else{
-		ll ans = accumulate(v.begin(), v.end(), 0ll) - n;
-		for (int x = 1; ; ++x){
-			ll curPow = 1, curCost = 0;
-			for (int i = 0; i < n; ++i) {
-				curCost = (curCost+abs(v[i]-curPow)>=1e17?1e17:curCost+abs(v[i]-curPow));
-				curPow = (curPow*x>=1e17?1e17:curPow*x);
-			}
-			if (curPow >= 1e17 || curPow / x > ans + v[n - 1]) break;
-			ans = min(ans, curCost);
-		}
-		cout << ans << endl;
+	int n;cin>>n;
+	vector<pair<int,int>> v(n);
+	rep(i,0,n){
+		int a,b;cin>>a>>b;
+		v[i] = {a,b};
 	}
+	sort(all(v));
+	// repA(i,v)	cout<<i.fi<<' '<<i.se<<endl;
+	rep(i,1,n){
+		if(v[i].se<v[i-1].se && v[i].fi!=v[i-1].fi){
+			cout<<"Happy Alex"<<endl;
+			return;
+		}
+	}
+	cout<<"Poor Alex"<<endl;
 	return ;
 }
 
@@ -64,5 +59,6 @@ int main(){
 /**
  * Test Cases:-
  */
-// 3
-// 1000000000 1000000000 1000000000
+// 2
+// 1 2
+// 2 1

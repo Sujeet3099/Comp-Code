@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   B. Power Sequence
- * link          :   https://codeforces.com/problemset/problem/1397/B
+ * question name :   C. Similar Pairs
+ * link          :   https://codeforces.com/problemset/problem/1360/C
  */
 
 #define ll long long
@@ -26,25 +26,24 @@ ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 
 
 void solve(){
-	ll n;cin >> n;
-	vll v(n);
-	rep(i,0,n) cin>>v[i];
-	sort(all(v));
-
-	if (n <= 2)	cout << v[0] - 1 << endl;
-	else{
-		ll ans = accumulate(v.begin(), v.end(), 0ll) - n;
-		for (int x = 1; ; ++x){
-			ll curPow = 1, curCost = 0;
-			for (int i = 0; i < n; ++i) {
-				curCost = (curCost+abs(v[i]-curPow)>=1e17?1e17:curCost+abs(v[i]-curPow));
-				curPow = (curPow*x>=1e17?1e17:curPow*x);
-			}
-			if (curPow >= 1e17 || curPow / x > ans + v[n - 1]) break;
-			ans = min(ans, curCost);
-		}
-		cout << ans << endl;
+	int n;cin>>n;
+	vi v(n);
+	int even = 0,odd = 0;
+	rep(i,0,n){
+		cin>>v[i];
+		if(v[i]&1)	odd++;
+		else	even++;
 	}
+	if(even%2==0 && odd%2 == 0){
+		cout<<"YES"<<endl;
+		return;
+	}
+	sort(all(v));
+	int cnt = 0;
+	rep(i,1,n)	if(abs(v[i]-v[i-1]==1))	cnt++;
+	if(cnt)	cout<<"YES"<<endl;
+	else	cout<<"NO"<<endl;
+	// cout<<even<<' '<<odd<<' '<<cnt<<endl;
 	return ;
 }
 
@@ -54,7 +53,7 @@ int main(){
     clock_t start=clock();
 
 	ll test = 1;
-	// cin>>test;
+	cin>>test;
 	while(test--)	solve();
 
 	clock_t end=clock();
@@ -64,5 +63,18 @@ int main(){
 /**
  * Test Cases:-
  */
-// 3
-// 1000000000 1000000000 1000000000
+// 7
+// 4
+// 11 14 16 12
+// 2
+// 1 8
+// 4
+// 1 1 1 1
+// 4
+// 1 2 5 6
+// 2
+// 12 13
+// 6
+// 1 6 3 10 5 8
+// 6
+// 1 12 3 10 5 8
