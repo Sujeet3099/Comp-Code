@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   B. Sereja and Suffixes
- * link          :   https://codeforces.com/problemset/problem/368/B
+ * question name :   B. GCD Compression
+ * link          :   https://codeforces.com/problemset/problem/1370/B
  */
 
 #define ll long long
@@ -24,22 +24,37 @@ using namespace std;
 ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 {if(y&1) res=(res*x)%p;y=y>>1; x=(x*x)%p;}return res;}
 
-void solve(){
-	int n,m;cin>>n>>m;
-	vi v(n);
-	map<int,int> mp;
-	rep(i,0,n)	cin>>v[i],mp[v[i]]++;
-	vi suffix;
-	rep(i,0,n){
-		suffix.pb(mp.size());
-		mp[v[i]]--;
-		if(mp[v[i]]==0)	mp.erase(v[i]);
-	}
-	rep(i,0,m){
-		int a;cin>>a;
-		cout<<suffix[a-1]<<endl;
-	}
 
+void solve(){
+	int n;cin>>n;
+	vi v(2*n),even,odd;
+	vector<int> pos[1001];
+	rep(i,0,2*n){
+		cin>>v[i];
+		pos[v[i]].pb(i+1);
+		if(v[i]&1)	odd.pb(v[i]);
+		else	even.pb(v[i]);
+	}
+	int c = 0;
+	for(int i = 0; i < even.size(); i+=2){
+		if(i+1<even.size()){
+			cout<<pos[even[i]][0]<<' '<<pos[even[i+1]][0]<<endl;
+			c++;
+			pos[even[i]].erase(pos[even[i]].begin()+0);
+			pos[even[i+1]].erase(pos[even[i+1]].begin()+0);
+		}
+		if(c==n-1)	return;
+	}
+	for(int i = 0; i < odd.size(); i+=2){
+		if(i+1<odd.size()){
+			cout<<pos[odd[i]][0]<<' '<<pos[odd[i+1]][0]<<endl;
+			c++;
+			pos[odd[i]].erase(pos[odd[i]].begin()+0);
+			pos[odd[i+1]].erase(pos[odd[i+1]].begin()+0);
+		}
+
+		if(c==n-1)	return;
+	}
 	return ;
 }
 
@@ -49,7 +64,7 @@ int main(){
     clock_t start=clock();
 
 	ll test = 1;
-	// cin>>test;
+	cin>>test;
 	while(test--)	solve();
 
 	clock_t end=clock();
@@ -59,15 +74,10 @@ int main(){
 /**
  * Test Cases:-
  */
-// 10 10
-// 1 2 3 4 1 2 3 4 100000 99999
-// 1
-// 2
 // 3
-// 4
+// 3
+// 1 2 3 4 5 6
+// 2
+// 5 7 9 10
 // 5
-// 6
-// 7
-// 8
-// 9
-// 10
+// 1 3 3 4 5 90 100 101 2 3

@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   B. Sereja and Suffixes
- * link          :   https://codeforces.com/problemset/problem/368/B
+ * question name :   
+ * link          :   
  */
 
 #define ll long long
@@ -24,22 +24,27 @@ using namespace std;
 ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 {if(y&1) res=(res*x)%p;y=y>>1; x=(x*x)%p;}return res;}
 
-void solve(){
-	int n,m;cin>>n>>m;
-	vi v(n);
-	map<int,int> mp;
-	rep(i,0,n)	cin>>v[i],mp[v[i]]++;
-	vi suffix;
-	rep(i,0,n){
-		suffix.pb(mp.size());
-		mp[v[i]]--;
-		if(mp[v[i]]==0)	mp.erase(v[i]);
-	}
-	rep(i,0,m){
-		int a;cin>>a;
-		cout<<suffix[a-1]<<endl;
-	}
 
+void solve(){
+
+	ll m;cin>>m;
+	ll n = 1e7;
+	vi prime(n,1);
+    for (int i = 2; i*i <= n; i++) {
+       	if(prime[i]==1){
+       		for(int j = 2; i*j<=n;j++){
+       			prime[i*j]=0;
+       		}
+       	}
+    }
+    vi v;
+    rep(i,2,prime.size()){
+    	if(prime[i]==1){
+    		v.pb(i);
+    	}
+    	if(v.size()==m)	break;
+    }
+    repA(i,v)	cout<<i<<endl;
 	return ;
 }
 
@@ -59,15 +64,3 @@ int main(){
 /**
  * Test Cases:-
  */
-// 10 10
-// 1 2 3 4 1 2 3 4 100000 99999
-// 1
-// 2
-// 3
-// 4
-// 5
-// 6
-// 7
-// 8
-// 9
-// 10

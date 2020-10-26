@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   B. Sereja and Suffixes
- * link          :   https://codeforces.com/problemset/problem/368/B
+ * question name :   A. Matrix Game
+ * link          :   https://codeforces.com/problemset/problem/1365/A
  */
 
 #define ll long long
@@ -24,22 +24,40 @@ using namespace std;
 ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 {if(y&1) res=(res*x)%p;y=y>>1; x=(x*x)%p;}return res;}
 
+
 void solve(){
 	int n,m;cin>>n>>m;
-	vi v(n);
-	map<int,int> mp;
-	rep(i,0,n)	cin>>v[i],mp[v[i]]++;
-	vi suffix;
+	int v[n][m];
+	rep(i,0,n)	rep(j,0,m)	cin>>v[i][j];
+	bool vivek = true,ashish = false,det;
 	rep(i,0,n){
-		suffix.pb(mp.size());
-		mp[v[i]]--;
-		if(mp[v[i]]==0)	mp.erase(v[i]);
+		rep(j,0,m){
+			det = true;
+			rep(k,0,n){
+				if(v[k][j]){
+					det = false;
+					break;
+				}
+			}
+			rep(l,0,m){
+				if(v[i][l]){
+					det = false;
+					break;
+				}
+			}
+			if(det){
+				if(vivek)	vivek = false,ashish = true;
+				else	vivek = true,ashish = false;
+				v[i][j] = 1;
+			}
+		}
 	}
-	rep(i,0,m){
-		int a;cin>>a;
-		cout<<suffix[a-1]<<endl;
-	}
-
+	// rep(i,0,n){
+	// 	rep(j,0,m)	cout<<v[i][j]<<' ';
+	// 	cout<<endl;
+	// }
+	if(vivek)	cout<<"Vivek"<<endl;
+	else	cout<<"Ashish"<<endl;
 	return ;
 }
 
@@ -49,7 +67,7 @@ int main(){
     clock_t start=clock();
 
 	ll test = 1;
-	// cin>>test;
+	cin>>test;
 	while(test--)	solve();
 
 	clock_t end=clock();
@@ -59,15 +77,17 @@ int main(){
 /**
  * Test Cases:-
  */
-// 10 10
-// 1 2 3 4 1 2 3 4 100000 99999
-// 1
-// 2
-// 3
 // 4
-// 5
-// 6
-// 7
-// 8
-// 9
-// 10
+// 2 2
+// 0 0
+// 0 0
+// 2 2
+// 0 0
+// 0 1
+// 2 3
+// 1 0 1
+// 1 1 0
+// 3 3
+// 1 0 0
+// 0 0 0
+// 1 0 0

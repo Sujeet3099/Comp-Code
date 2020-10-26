@@ -28,10 +28,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a3881e66-85cf-4a14-99a5-4e58f1345919" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Codeforces/Practice/800-1000/inputf.in" beforeDir="false" afterPath="$PROJECT_DIR$/Codeforces/Practice/800-1000/inputf.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codeforces/Practice/800-1000/outputf.in" beforeDir="false" afterPath="$PROJECT_DIR$/Codeforces/Practice/800-1000/outputf.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PS_HackerRank/Implementation/ACM_ICPC_Team.exe" beforeDir="false" afterPath="$PROJECT_DIR$/PS_HackerRank/Implementation/ACM_ICPC_Team.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PS_HackerRank/Implementation/Beautiful_Days_at_the_Movies.exe" beforeDir="false" afterPath="$PROJECT_DIR$/PS_HackerRank/Implementation/Beautiful_Days_at_the_Movies.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codeforces/A Practice/1000-1200/B_Sereja_and_Suffixes.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Codeforces/A Practice/1000-1200/B_Sereja_and_Suffixes.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codeforces/A Practice/1000-1200/B_Sereja_and_Suffixes.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Codeforces/A Practice/1000-1200/B_Sereja_and_Suffixes.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codeforces/A Practice/1000-1200/inputf.in" beforeDir="false" afterPath="$PROJECT_DIR$/Codeforces/A Practice/1000-1200/inputf.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codeforces/A Practice/1000-1200/outputf.in" beforeDir="false" afterPath="$PROJECT_DIR$/Codeforces/A Practice/1000-1200/outputf.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codeforces/A Practice/800-1000/outputf.in" beforeDir="false" afterPath="$PROJECT_DIR$/Codeforces/A Practice/800-1000/outputf.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PS_HackerRank/Arrays/inputf.in" beforeDir="false" afterPath="$PROJECT_DIR$/PS_HackerRank/Arrays/inputf.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PS_HackerRank/Arrays/outputf.in" beforeDir="false" afterPath="$PROJECT_DIR$/PS_HackerRank/Arrays/outputf.in" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +67,7 @@
       <option name="presentableId" value="Default" />
       <updated>1598681087640</updated>
       <workItem from="1598681089804" duration="130000" />
+      <workItem from="1603709855054" duration="61000" />
     </task>
     <servers />
   </component>
@@ -80,6 +84,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="505" y="234" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598681205954">
@@ -90,16 +95,5 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1598681182771" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Codeforces/Practice/800-1000/A_Common_Subsequence.cpp</url>
-          <line>23</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

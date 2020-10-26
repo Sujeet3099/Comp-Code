@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   B. Sereja and Suffixes
- * link          :   https://codeforces.com/problemset/problem/368/B
+ * question name :   Dynamic Array
+ * link          :   https://www.hackerrank.com/challenges/dynamic-array/problem
  */
 
 #define ll long long
@@ -24,22 +24,24 @@ using namespace std;
 ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 {if(y&1) res=(res*x)%p;y=y>>1; x=(x*x)%p;}return res;}
 
-void solve(){
-	int n,m;cin>>n>>m;
-	vi v(n);
-	map<int,int> mp;
-	rep(i,0,n)	cin>>v[i],mp[v[i]]++;
-	vi suffix;
-	rep(i,0,n){
-		suffix.pb(mp.size());
-		mp[v[i]]--;
-		if(mp[v[i]]==0)	mp.erase(v[i]);
-	}
-	rep(i,0,m){
-		int a;cin>>a;
-		cout<<suffix[a-1]<<endl;
-	}
 
+void solve(){
+	int n,q;cin>>n>>q;
+	vector<vector<int>> v(n);
+	int lst = 0;
+	rep(i,0,q){
+		int a,b,c;cin>>a>>b>>c;
+		if(a == 1){
+			int j = (b^lst)%n;
+			v[j].pb(c);
+		}
+		else{
+			int j = (b^lst)%n;
+			int k = c%v[j].size();
+			lst = v[j][k];
+			cout<<lst<<endl;
+		}
+	}
 	return ;
 }
 
@@ -59,15 +61,9 @@ int main(){
 /**
  * Test Cases:-
  */
-// 10 10
-// 1 2 3 4 1 2 3 4 100000 99999
-// 1
-// 2
-// 3
-// 4
-// 5
-// 6
-// 7
-// 8
-// 9
-// 10
+// 2 5
+// 1 0 5
+// 1 1 7
+// 1 0 3
+// 2 1 0
+// 2 1 1

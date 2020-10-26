@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   B. Sereja and Suffixes
- * link          :   https://codeforces.com/problemset/problem/368/B
+ * question name :   Left Rotation
+ * link          :   https://www.hackerrank.com/challenges/array-left-rotation/problem
  */
 
 #define ll long long
@@ -24,22 +24,17 @@ using namespace std;
 ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 {if(y&1) res=(res*x)%p;y=y>>1; x=(x*x)%p;}return res;}
 
-void solve(){
-	int n,m;cin>>n>>m;
-	vi v(n);
-	map<int,int> mp;
-	rep(i,0,n)	cin>>v[i],mp[v[i]]++;
-	vi suffix;
-	rep(i,0,n){
-		suffix.pb(mp.size());
-		mp[v[i]]--;
-		if(mp[v[i]]==0)	mp.erase(v[i]);
-	}
-	rep(i,0,m){
-		int a;cin>>a;
-		cout<<suffix[a-1]<<endl;
-	}
 
+void solve(){
+	int n,r;cin>>n>>r;
+	deque<int> d(n);
+	rep(i,0,n)	cin>>d[i];
+	while(r--){
+		int t = d.front();
+		d.pop_front();
+		d.pb(t);
+	}
+	repA(i,d)	cout<<i<<' ';
 	return ;
 }
 
@@ -59,15 +54,5 @@ int main(){
 /**
  * Test Cases:-
  */
-// 10 10
-// 1 2 3 4 1 2 3 4 100000 99999
-// 1
-// 2
-// 3
-// 4
-// 5
-// 6
-// 7
-// 8
-// 9
-// 10
+// 5 4
+// 1 2 3 4 5

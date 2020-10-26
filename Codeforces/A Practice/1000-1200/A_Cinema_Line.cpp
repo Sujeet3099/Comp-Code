@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   B. Sereja and Suffixes
- * link          :   https://codeforces.com/problemset/problem/368/B
+ * question name :   A. Cinema Line
+ * link          :   https://codeforces.com/problemset/problem/349/A
  */
 
 #define ll long long
@@ -24,22 +24,40 @@ using namespace std;
 ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 {if(y&1) res=(res*x)%p;y=y>>1; x=(x*x)%p;}return res;}
 
-void solve(){
-	int n,m;cin>>n>>m;
-	vi v(n);
-	map<int,int> mp;
-	rep(i,0,n)	cin>>v[i],mp[v[i]]++;
-	vi suffix;
-	rep(i,0,n){
-		suffix.pb(mp.size());
-		mp[v[i]]--;
-		if(mp[v[i]]==0)	mp.erase(v[i]);
-	}
-	rep(i,0,m){
-		int a;cin>>a;
-		cout<<suffix[a-1]<<endl;
-	}
 
+void solve(){
+	int n;cin>>n;
+	vi v(n);
+	map<int,int> m;
+	rep(i,0,n){
+		cin>>v[i];
+		if(v[i]<=100)	m[v[i]]++;
+		v[i] -= 25;
+		if(v[i]>=100){
+			int j = v[i]/100;
+			j = min(m[100],j);
+			m[100] -= j;
+			v[i] -= 100*j;
+		}
+		if(v[i]>=50){
+			int j = v[i]/50;
+			j = min(m[50],j);
+			m[50] -= j;
+			v[i] -= 50*j;
+		}
+		if(v[i]>=25){
+			int j = v[i]/25;
+			j = min(m[25],j);
+			m[25] -= j;
+			v[i] -= 25*j;
+		}
+		if(v[i]==0)	continue;
+		else{
+			cout<<"NO"<<endl;
+			return;
+		}
+	}
+	cout<<"YES"<<endl;
 	return ;
 }
 
@@ -59,15 +77,5 @@ int main(){
 /**
  * Test Cases:-
  */
-// 10 10
-// 1 2 3 4 1 2 3 4 100000 99999
-// 1
-// 2
-// 3
 // 4
-// 5
-// 6
-// 7
-// 8
-// 9
-// 10
+// 25 25 50 50

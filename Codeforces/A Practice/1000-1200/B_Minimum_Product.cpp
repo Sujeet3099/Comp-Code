@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   B. Sereja and Suffixes
- * link          :   https://codeforces.com/problemset/problem/368/B
+ * question name :   B. Minimum Product
+ * link          :   https://codeforces.com/problemset/problem/1409/B
  */
 
 #define ll long long
@@ -24,22 +24,33 @@ using namespace std;
 ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 {if(y&1) res=(res*x)%p;y=y>>1; x=(x*x)%p;}return res;}
 
-void solve(){
-	int n,m;cin>>n>>m;
-	vi v(n);
-	map<int,int> mp;
-	rep(i,0,n)	cin>>v[i],mp[v[i]]++;
-	vi suffix;
-	rep(i,0,n){
-		suffix.pb(mp.size());
-		mp[v[i]]--;
-		if(mp[v[i]]==0)	mp.erase(v[i]);
-	}
-	rep(i,0,m){
-		int a;cin>>a;
-		cout<<suffix[a-1]<<endl;
-	}
 
+void solve(){
+	ll a,b,x,y,n;cin>>a>>b>>x>>y>>n;
+	if(a>b){
+		swap(a,b);
+		swap(x,y);
+	}
+	ll aa = a, bb = b,nn = n;
+	ll res = 1e18;
+
+	ll need = a-x;
+	if(n>need)	a = x,n -= need;
+	else	a -= n,n = 0;
+	need = b-y;
+	if(n>need)	b = y,n-=need;
+	else	b -= n,n = 0;
+	res = a*b;
+
+	need = bb-y;
+	if(nn>need)	bb = y,nn-=need;
+	else	bb -= nn,nn = 0;
+	need = aa-x;
+	if(nn>need)	aa = x,nn -= need;
+	else	aa -= nn,nn = 0;
+	res = min(res,aa*bb);
+	
+	cout<<res<<endl;
 	return ;
 }
 
@@ -49,7 +60,7 @@ int main(){
     clock_t start=clock();
 
 	ll test = 1;
-	// cin>>test;
+	cin>>test;
 	while(test--)	solve();
 
 	clock_t end=clock();
@@ -59,15 +70,11 @@ int main(){
 /**
  * Test Cases:-
  */
-// 10 10
-// 1 2 3 4 1 2 3 4 100000 99999
-// 1
-// 2
-// 3
-// 4
-// 5
-// 6
 // 7
-// 8
-// 9
-// 10
+// 10 10 8 5 3
+// 12 8 8 7 2
+// 12343 43 4543 39 123212
+// 1000000000 1000000000 1 1 1
+// 1000000000 1000000000 1 1 1000000000
+// 10 11 2 1 5
+// 10 11 9 1 10

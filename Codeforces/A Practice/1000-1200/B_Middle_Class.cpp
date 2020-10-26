@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   B. Sereja and Suffixes
- * link          :   https://codeforces.com/problemset/problem/368/B
+ * question name :   A. Pashmak and Garden
+ * link          :   https://codeforces.com/problemset/problem/459/A
  */
 
 #define ll long long
@@ -24,22 +24,30 @@ using namespace std;
 ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 {if(y&1) res=(res*x)%p;y=y>>1; x=(x*x)%p;}return res;}
 
-void solve(){
-	int n,m;cin>>n>>m;
-	vi v(n);
-	map<int,int> mp;
-	rep(i,0,n)	cin>>v[i],mp[v[i]]++;
-	vi suffix;
-	rep(i,0,n){
-		suffix.pb(mp.size());
-		mp[v[i]]--;
-		if(mp[v[i]]==0)	mp.erase(v[i]);
-	}
-	rep(i,0,m){
-		int a;cin>>a;
-		cout<<suffix[a-1]<<endl;
-	}
 
+void solve(){
+	int x1,x2,y1,y2;cin>>x1>>y1>>x2>>y2;
+	int dist;
+	dist = max(abs(x2-x1),abs(y2-y1));
+	if(x1 == x2){
+		cout<<x1+dist<<' '<<y1<<' '<<x2+dist<<' '<<y2<<endl;
+	}
+	else if(y1 == y2){
+		cout<<x1<<' '<<y1+dist<<' '<<x2<<' '<<y2+dist<<endl;
+	}
+	else{
+		double a = (abs((x2*x2)-(x1*x1)) + abs((y2*y2)-(y1*y1)));
+		double d;
+		d = (sqrt(a)/sqrt(2));
+		cout<<d<<endl;
+		cout<<floor(d)<<' '<<ceil(d)<<endl;
+		if(floor(d)!=ceil(d)){
+			cout<<-1<<endl;
+			return;
+		}
+		dist = (int)d;
+		cout<<x1+dist<<' '<<y1<<' '<<x1<<' '<<y1+dist<<endl;
+	}
 	return ;
 }
 
@@ -59,15 +67,4 @@ int main(){
 /**
  * Test Cases:-
  */
-// 10 10
-// 1 2 3 4 1 2 3 4 100000 99999
-// 1
-// 2
-// 3
-// 4
-// 5
-// 6
-// 7
-// 8
-// 9
-// 10
+// 0 0 0 1
