@@ -28,7 +28,7 @@ void buildTree(int si,int ss,int se,vi &v,vi &segTree){
 		segTree[si] = v[ss];
 		return;
 	}
-	int mid = (ss+se)/2;
+	int mid = (ss+se)/2;	
 	buildTree(2*si,ss,mid,v,segTree);
 	buildTree(2*si+1,mid+1,se,v,segTree);
 	segTree[si] = min(segTree[2*si],segTree[2*si+1]);

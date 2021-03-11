@@ -4,7 +4,7 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   DQUERY - D-query
+ * question name :   DQUERY - D-query 
  * link          :   https://www.spoj.com/problems/DQUERY/
  */
 

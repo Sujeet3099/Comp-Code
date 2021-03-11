@@ -49,7 +49,7 @@ void update(int si,int ss,int se,int qs,int qe,int val,vi &v,vi &segTree,vi &laz
 	if(ss>=qs && se<=qe){
 		int dx = ((se-ss)+1) * val;
 		segTree[si] += dx;
-		if(ss!=ss){
+		if(ss!=se){
 			lazyTree[2*si] += val;
 			lazyTree[2*si+1] += val;
 		}

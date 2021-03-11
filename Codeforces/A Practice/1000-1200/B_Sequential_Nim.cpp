@@ -1,7 +1,4 @@
-// #include"bits/stdc++.h"
-// 
-#include<stdio.h>
-#include<math.h>
+#include"bits/stdc++.h"
 using namespace std;
 
 /**
@@ -29,25 +26,54 @@ ll power(ll x,ll y,ll p){ll res=1; x=x%p;if(x==0) return 0;while(y>0)
 
 
 void solve(){
-	double a = pow(10,2);
-	printf("%lf\n",a);
-	// cout<<pow(10,4)<<endl;
+	int n,t;cin>>n;
+	bool first = false,second = true,det = true;
+	vi v(n);
+	int ones = 0;
+	rep(i,0,n){
+		cin>>v[i];
+		if(v[i]==1 && det == true)	ones++;
+		else	det = false;
+	}
+	if(ones == n){
+		if(ones%2)	cout<<"First"<<endl;
+		else	cout<<"Second"<<endl;
+	}
+	else{
+		if(ones%2==0)	cout<<"First"<<endl;
+		else	cout<<"Second"<<endl;
+	}
 	return ;
 }
 
 int main(){
-	// ios_base::sync_with_stdio(false);
- //    cin.tie(NULL);
-    // clock_t start=clock();
+	ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    clock_t start=clock();
 
 	ll test = 1;
-	// cin>>test;
+	cin>>test;
 	while(test--)	solve();
 
-	// clock_t end=clock();
-	// cerr<<fixed<<setprecision(15)<<((double)(end-start))/CLOCKS_PER_SEC<<endl;
+	clock_t end=clock();
+	cerr<<fixed<<setprecision(15)<<((double)(end-start))/CLOCKS_PER_SEC<<endl;
 	return 0;
 }
 /**
  * Test Cases:-
  */
+// 7
+// 3
+// 2 5 4
+// 8
+// 1 1 1 1 1 1 1 1
+// 6
+// 1 2 3 4 5 6
+// 8
+// 1 1 2 1 1 1 2 2
+// 1
+// 1000000000
+// 5
+// 1 2 2 1 1
+// 3
+// 1 1 1
