@@ -24,9 +24,26 @@ using namespace std;
 #define vi2(n, m) vector<vector<int> > v(n, vector<int>(m));
 
 #define MOD 1000000007
-
-void solve() {
-    cout << string(6, 'A');
+bool isPallindrome(string s) {
+    string temp = s;
+    reverse(all(temp));
+    if (s == temp)
+        return true;
+    else
+        return false;
+}
+void solve(string s, string res) {
+    if (s.size() == 0) {
+        cout << res << '\n';
+        return;
+    }
+    for (int i = 0; i < s.size(); i++) {
+        string temp = s.substr(0, i + 1);
+        string newS = s.substr(i + 1);
+        if (isPallindrome(temp)) {
+            solve(newS, res + "(" + temp + ") ");
+        }
+    }
     return;
 }
 
@@ -35,9 +52,9 @@ int main() {
     cin.tie(NULL);
     clock_t start = clock();
 
-    ll test = 1;
-    // cin >> test;
-    while (test--) solve();
+    string s;
+    cin >> s;
+    solve(s, "");
 
     clock_t end = clock();
     cerr << fixed << setprecision(15) << ((double)(end - start)) / CLOCKS_PER_SEC;
@@ -46,3 +63,4 @@ int main() {
 /**
  * Test Cases:-
  */
+// pep

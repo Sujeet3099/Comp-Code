@@ -4,7 +4,7 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   
+ * question name :   Word Break
  * link          :   
  */
 
@@ -25,8 +25,18 @@ using namespace std;
 
 #define MOD 1000000007
 
-void solve() {
-    cout << string(6, 'A');
+void solve(vector<string>& v, string s, string res) {
+    if (s.size() == 0) {
+        cout << res << '\n';
+        return;
+    }
+    rep(i, 0, s.size()) {
+        string left = s.substr(0, i + 1);
+        if (find(all(v), left) != v.end()) {
+            string right = s.substr(i + 1);
+            solve(v, right, res + left + " ");
+        }
+    }
     return;
 }
 
@@ -35,9 +45,13 @@ int main() {
     cin.tie(NULL);
     clock_t start = clock();
 
-    ll test = 1;
-    // cin >> test;
-    while (test--) solve();
+    string s;
+    int n;
+    cin >> n;
+    vector<string> v(n);
+    rep(i, 0, n) cin >> v[i];
+    cin >> s;
+    solve(v, s, "");
 
     clock_t end = clock();
     cerr << fixed << setprecision(15) << ((double)(end - start)) / CLOCKS_PER_SEC;
@@ -46,3 +60,6 @@ int main() {
 /**
  * Test Cases:-
  */
+// 11
+// i like pep coding pepper eating mango man go in pepcoding
+// ilikepeppereatingmangoinpepcoding

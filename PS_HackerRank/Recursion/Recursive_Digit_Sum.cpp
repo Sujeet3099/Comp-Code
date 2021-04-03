@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   
- * link          :   
+ * question name :   Recursive Digit Sum
+ * link          :   https://www.hackerrank.com/challenges/recursive-digit-sum/problem
  */
 
 #define ll long long
@@ -25,8 +25,27 @@ using namespace std;
 
 #define MOD 1000000007
 
+ll result = 0;
+
+void digitSum(string s) {
+    if (s.size() == 1) {
+        result = stoll(s);
+        return;
+    }
+    ll res = 0;
+    rep(i, 0, s.size()) res += (ll)s[i] - '0';
+    string newS = to_string(res);
+    digitSum(newS);
+}
+
 void solve() {
-    cout << string(6, 'A');
+    string s;
+    ll k;
+    cin >> s >> k;
+    digitSum(s);
+    digitSum(to_string(result * k));
+    cout << result << '\n';
+    result = 0;
     return;
 }
 
@@ -36,7 +55,7 @@ int main() {
     clock_t start = clock();
 
     ll test = 1;
-    // cin >> test;
+    cin >> test;
     while (test--) solve();
 
     clock_t end = clock();
@@ -46,3 +65,4 @@ int main() {
 /**
  * Test Cases:-
  */
+// 9875 4

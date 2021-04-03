@@ -59,8 +59,9 @@ vector<bool> placeHor(string s, int i, int j) {
     for (int col = 0; col < s.size(); col++) {
         if (puzzle[i][j + col] == '-') {
             puzzle[i][j + col] = s[col];
-        } else {
             hold[col] = true;
+        } else {
+        	hold[col] = false;
         }
     }
     return hold;
@@ -71,8 +72,9 @@ vector<bool> placeVer(string s, int i, int j) {
     for (int row = 0; row < s.size(); row++) {
         if (puzzle[i + row][j] == '-') {
             puzzle[i + row][j] = s[row];
-        } else {
             hold[row] = true;
+        } else {
+        	hold[row] = false;
         }
     }
     return hold;

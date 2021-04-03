@@ -4,7 +4,7 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   
+ * question name :   Friends Pairing
  * link          :   
  */
 
@@ -25,9 +25,30 @@ using namespace std;
 
 #define MOD 1000000007
 
-void solve() {
-    cout << string(6, 'A');
-    return;
+vector<bool> vis(10000);
+
+void solve(int n, int i, string res) {
+    static int counter = 1;
+    if (i > n) {
+        cout << counter << "." << res << '\n';
+        counter++;
+        return;
+    }
+    if (vis[i] == true) {
+        // cout << i << '\n';
+        solve(n, i + 1, res);
+    } else {
+        vis[i] = true;
+        solve(n, i + 1, res + "(" + string(1, i + '0') + ") ");
+        for (int j = i + 1; j <= n; j++) {
+            if (vis[j] == false) {
+                vis[j] = true;
+                solve(n, i + 1, res + "(" + string(1, i + '0') + "," + string(1, j + '0') + ") ");
+                vis[j] = false;
+            }
+        }
+        vis[i] = false;
+    }
 }
 
 int main() {
@@ -35,9 +56,9 @@ int main() {
     cin.tie(NULL);
     clock_t start = clock();
 
-    ll test = 1;
-    // cin >> test;
-    while (test--) solve();
+    int n;
+    cin >> n;
+    solve(n, 1, "");
 
     clock_t end = clock();
     cerr << fixed << setprecision(15) << ((double)(end - start)) / CLOCKS_PER_SEC;
@@ -46,3 +67,4 @@ int main() {
 /**
  * Test Cases:-
  */
+// 3

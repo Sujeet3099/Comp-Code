@@ -4,7 +4,7 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   
+ * question name :   Balanced Arrays
  * link          :   
  */
 
@@ -26,7 +26,43 @@ using namespace std;
 #define MOD 1000000007
 
 void solve() {
-    cout << string(6, 'A');
+    int n;
+    cin >> n;
+    // vi suffix(n), prefix(n), v(n);
+    vi v(n);
+    int left = 0, right = 0;
+    rep(i, 0, n) {
+        cin >> v[i];
+        if (i < n / 2) {
+            left += v[i];
+        } else {
+            right += v[i];
+        }
+        // if (i == 0) {
+        //     prefix[i] = v[i];
+        // } else {
+        //     prefix[i] = v[i] + prefix[i - 1];
+        // }
+    }
+    cout << abs(left - right);
+    // per(i, 0, n) {
+    //     if (i == n - 1) {
+    //         suffix[i] = v[i];
+    //     } else {
+    //         suffix[i] = v[i] + suffix[i + 1];
+    //     }
+    // }
+    // int mn = 1e9;
+    // rep(i, 0, n) {
+    //     mn = min(mn, abs(prefix[i] - suffix[i + 1]));
+    // }
+    // cout << mn << '\n';
+    // repA(i, v) cout << i << ' ';
+    // cout << '\n';
+    // repA(i, prefix) cout << i << ' ';
+    // cout << '\n';
+    // repA(i, suffix) cout << i << ' ';
+
     return;
 }
 

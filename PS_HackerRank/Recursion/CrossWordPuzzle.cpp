@@ -58,9 +58,9 @@ vector<bool> setVertically(int row, int col, string temp) {
     rep(i, 0, n) {
         if (cross[row + i][col] == '-') {
             cross[row + i][col] = temp[i];
-        } else {
             rem[i] = true;
-            // rem[i] = false;
+        } else {
+            rem[i] = false;
         }
     }
     return rem;
@@ -71,9 +71,9 @@ vector<bool> setHorizontally(int row, int col, string temp) {
     rep(i, 0, n) {
         if (cross[row][col + i] == '-') {
             cross[row][col + i] = temp[i];
-        } else {
             rem[i] = true;
-            // rem[i] = false;
+        } else {
+            rem[i] = false;
         }
     }
     return rem;
@@ -94,10 +94,11 @@ void print() {
         cout << '\n';
     }
 }
-
+bool res = false;
 void solveCross(vector<string> v, int pos) {
-    if (v.size() == pos) {
+    if (pos == v.size()) {
         print();
+        res = true;
         return;
     }
     string temp = v[pos];
@@ -105,7 +106,7 @@ void solveCross(vector<string> v, int pos) {
         for (int col = 0; col < 10; col++) {
             if (cross[row][col] == '-' || cross[row][col] == temp[0]) {
                 if (checkHorizontally(row, col, temp)) {
-                    cout << "hey\n";
+                    // cout << "hey\n";
                     vector<bool> rem(temp.size());
                     rem = setHorizontally(row, col, temp);
                     solveCross(v, pos + 1);
@@ -135,8 +136,8 @@ void solve() {
             s.pb(ch);
     }
     v.pb(s);
+    reverse(all(v));
     solveCross(v, 0);
-    // print();
     return;
 }
 
@@ -157,12 +158,13 @@ int main() {
  * Test Cases:-
  */
 // +-++++++++
-// +-++++++++
-// +-++++++++
-// +-----++++
-// +-+++-++++
-// +-+++-++++
-// +++++-++++
-// ++------++
-// +++++-++++
-// +++++-++++
+// +-++-+++++
+// +-------++
+// +-++-+++++
+// +-++-+++++
+// +-++-+++++
+// ++++-+++++
+// ++++-+++++
+// ++++++++++
+// ----------
+// NIGERIA;CANADA;TELAVIV;CALIFORNIA
