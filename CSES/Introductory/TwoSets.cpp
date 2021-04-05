@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   
- * link          :   
+ * question name :   Two Sets
+ * link          :   https://cses.fi/problemset/task/1092/
  */
 
 #define ll long long
@@ -25,10 +25,32 @@ using namespace std;
 
 #define MOD 1000000007
 
-void solve(char *ch) {
-    string s = ch;
-   
-    cout<<s;
+void solve() {
+    ll n;
+    cin >> n;
+    ll sum = (n * (1 + n)) / 2;
+    if (sum % 2 == 0) {
+        ll halfSum = sum / 2;
+        vi one, two;
+        ll oneSum = 0, twoSum = 0;
+        for (int i = n; i > 0; i--) {
+            if (oneSum + i > halfSum) {
+                two.push_back(i);
+                twoSum += i;
+            } else {
+                one.push_back(i);
+                oneSum += i;
+            }
+        }
+        cout<<"YES\n";
+        cout<<one.size()<<'\n';
+        repA(i, one) cout << i << ' ';
+        cout << '\n';
+        cout << two.size() << '\n';
+        repA(i, two) cout << i << ' ';
+    } else {
+        cout << "NO";
+    }
     return;
 }
 
@@ -39,8 +61,7 @@ int main() {
 
     ll test = 1;
     // cin >> test;
-    char s[100] = "ajklshbcjlshbcjlHCBJ";
-    while (test--) solve(s);
+    while (test--) solve();
 
     clock_t end = clock();
     cerr << fixed << setprecision(15) << ((double)(end - start)) / CLOCKS_PER_SEC;
@@ -49,3 +70,4 @@ int main() {
 /**
  * Test Cases:-
  */
+// 8

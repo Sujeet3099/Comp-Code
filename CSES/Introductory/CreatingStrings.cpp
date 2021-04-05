@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   
- * link          :   
+ * question name :   Creating Strings
+ * link          :   https://cses.fi/problemset/task/1622
  */
 
 #define ll long long
@@ -24,11 +24,27 @@ using namespace std;
 #define vi2(n, m) vector<vector<int> > v(n, vector<int>(m));
 
 #define MOD 1000000007
+set<string> st;
 
-void solve(char *ch) {
-    string s = ch;
-   
-    cout<<s;
+void sol(string s, string res) {
+    if (s.size() == 0) {
+        st.insert(res);
+        return;
+    }
+    for (int i = 0; i < s.size(); i++) {
+        char ch = s[i];
+        s.erase(s.begin() + i);
+        sol(s, res + ch);
+        s.insert(s.begin() + i, ch);
+    }
+}
+
+void solve() {
+    string s;
+    cin >> s;
+    sol(s, "");
+    cout << st.size() << '\n';
+    repA(i, st) cout << i << '\n';
     return;
 }
 
@@ -39,8 +55,7 @@ int main() {
 
     ll test = 1;
     // cin >> test;
-    char s[100] = "ajklshbcjlshbcjlHCBJ";
-    while (test--) solve(s);
+    while (test--) solve();
 
     clock_t end = clock();
     cerr << fixed << setprecision(15) << ((double)(end - start)) / CLOCKS_PER_SEC;
@@ -49,3 +64,4 @@ int main() {
 /**
  * Test Cases:-
  */
+// aabac

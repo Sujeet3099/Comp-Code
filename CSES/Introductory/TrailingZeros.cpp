@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   
- * link          :   
+ * question name :   Trailing Zeros
+ * link          :   https://cses.fi/problemset/task/1618
  */
 
 #define ll long long
@@ -25,10 +25,16 @@ using namespace std;
 
 #define MOD 1000000007
 
-void solve(char *ch) {
-    string s = ch;
-   
-    cout<<s;
+void solve() {
+    int n;
+    cin >> n;
+    int i = 1;
+    int res = 0;
+    while (pow(5, i) <= n) {
+        res += n / pow(5, i);
+        i++;
+    }
+    cout << res;
     return;
 }
 
@@ -39,8 +45,7 @@ int main() {
 
     ll test = 1;
     // cin >> test;
-    char s[100] = "ajklshbcjlshbcjlHCBJ";
-    while (test--) solve(s);
+    while (test--) solve();
 
     clock_t end = clock();
     cerr << fixed << setprecision(15) << ((double)(end - start)) / CLOCKS_PER_SEC;
@@ -49,3 +54,4 @@ int main() {
 /**
  * Test Cases:-
  */
+// 20

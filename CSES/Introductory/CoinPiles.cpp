@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   
- * link          :   
+ * question name :   Coin Piles
+ * link          :   https://cses.fi/problemset/task/1754
  */
 
 #define ll long long
@@ -25,10 +25,16 @@ using namespace std;
 
 #define MOD 1000000007
 
-void solve(char *ch) {
-    string s = ch;
-   
-    cout<<s;
+void solve() {
+    int m, n;
+    cin >> m >> n;
+    if (m > n) swap(n, m);
+    if ((n + m) % 3 == 0 && !(m < n / 2)) {
+        cout << "YES\n";
+    } else {
+        cout << "NO\n";
+    }
+
     return;
 }
 
@@ -38,9 +44,8 @@ int main() {
     clock_t start = clock();
 
     ll test = 1;
-    // cin >> test;
-    char s[100] = "ajklshbcjlshbcjlHCBJ";
-    while (test--) solve(s);
+    cin >> test;
+    while (test--) solve();
 
     clock_t end = clock();
     cerr << fixed << setprecision(15) << ((double)(end - start)) / CLOCKS_PER_SEC;
@@ -49,3 +54,10 @@ int main() {
 /**
  * Test Cases:-
  */
+// 6
+// 2 1
+// 2 2
+// 3 3
+// 8 7
+// 7 5
+// 11 7

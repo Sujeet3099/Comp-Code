@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   
- * link          :   
+ * question name :   Bit Strings
+ * link          :   https://cses.fi/problemset/task/1617
  */
 
 #define ll long long
@@ -25,10 +25,25 @@ using namespace std;
 
 #define MOD 1000000007
 
-void solve(char *ch) {
-    string s = ch;
-   
-    cout<<s;
+ll power(ll x, ll y) {
+    ll res = 1;            // Initialize result
+    x = x % MOD;           // Update x if it is more than or equal to p
+    if (x == 0) return 0;  // In case x is divisible by p;
+    while (y > 0) {
+        // If y is odd, multiply x with result
+        if (y & 1)
+            res = (res * x) % MOD;
+        // y must be even now
+        y = y >> 1;  // y = y/2
+        x = (x * x) % MOD;
+    }
+    return res;
+}
+
+void solve() {
+    ll n;
+    cin >> n;
+    cout << power(2, n);
     return;
 }
 
@@ -39,8 +54,7 @@ int main() {
 
     ll test = 1;
     // cin >> test;
-    char s[100] = "ajklshbcjlshbcjlHCBJ";
-    while (test--) solve(s);
+    while (test--) solve();
 
     clock_t end = clock();
     cerr << fixed << setprecision(15) << ((double)(end - start)) / CLOCKS_PER_SEC;
@@ -49,3 +63,4 @@ int main() {
 /**
  * Test Cases:-
  */
+// 3

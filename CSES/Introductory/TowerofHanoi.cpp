@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   
- * link          :   
+ * question name :   Tower of Hanoi
+ * link          :   hrome-error://chromewebdata
  */
 
 #define ll long long
@@ -25,10 +25,25 @@ using namespace std;
 
 #define MOD 1000000007
 
-void solve(char *ch) {
-    string s = ch;
-   
-    cout<<s;
+vector<pi> v;
+int i = 0;
+void toh(int n, int from, int to, int use) {
+    i++;
+    if (n == 1) {
+        v.push_back(mp(from, to));
+        return;
+    }
+    toh(n - 1, from, use, to);
+    v.push_back(mp(from, to));
+    toh(n - 1, use, to, from);
+}
+
+void solve() {
+    int n;
+    cin >> n;
+    toh(n, 1, 3, 2);
+    cout << i << '\n';
+    repA(i, v) cout << i.fi << ' ' << i.se << '\n';
     return;
 }
 
@@ -39,8 +54,7 @@ int main() {
 
     ll test = 1;
     // cin >> test;
-    char s[100] = "ajklshbcjlshbcjlHCBJ";
-    while (test--) solve(s);
+    while (test--) solve();
 
     clock_t end = clock();
     cerr << fixed << setprecision(15) << ((double)(end - start)) / CLOCKS_PER_SEC;
@@ -49,3 +63,4 @@ int main() {
 /**
  * Test Cases:-
  */
+// 3

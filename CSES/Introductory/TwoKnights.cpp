@@ -4,8 +4,8 @@ using namespace std;
 /**
  * Copyright (c)
  * author        :   Sujeet Kumar 
- * question name :   
- * link          :   
+ * question name :   Two Knights
+ * link          :   https://cses.fi/problemset/task/1072
  */
 
 #define ll long long
@@ -25,10 +25,22 @@ using namespace std;
 
 #define MOD 1000000007
 
-void solve(char *ch) {
-    string s = ch;
-   
-    cout<<s;
+void solve() {
+    ll m;
+    cin >> m;
+    ll n = 1;
+    while (n <= m) {
+        if (n == 1) {
+            cout << 0 << '\n';
+        } else if (n == 0) {
+            break;
+        } else {
+            ll tot = ((n * n) * (n * n - 1)) / 2;
+            tot -= 4 * (n - 1) * (n - 2);
+            cout << tot << '\n';
+        }
+        n++;
+    }
     return;
 }
 
@@ -39,8 +51,7 @@ int main() {
 
     ll test = 1;
     // cin >> test;
-    char s[100] = "ajklshbcjlshbcjlHCBJ";
-    while (test--) solve(s);
+    while (test--) solve();
 
     clock_t end = clock();
     cerr << fixed << setprecision(15) << ((double)(end - start)) / CLOCKS_PER_SEC;
@@ -49,3 +60,4 @@ int main() {
 /**
  * Test Cases:-
  */
+// 8
