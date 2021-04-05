@@ -38,7 +38,7 @@ void solve() {
     cout << (n | onmask) << '\n';
     cout << (n & offmask) << '\n';
     cout << (n ^ togglemask) << '\n';
-    cout << ((n & checkmask) == 0 ? true : false) << '\n';
+    cout << ((n & checkmask) != 0 ? 'true' : 'false') << '\n';
     return;
 }
 
