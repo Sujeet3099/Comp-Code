@@ -26,8 +26,41 @@ using namespace std;
 #define MOD 1000000007
 
 void solve() {
-    ll n;
-    cin >> n;
+    int n, m, k;
+    cin >> n >> m >> k;
+    int v[n][m];
+    int res[n][m];
+    res[0][0] = v[0][0];
+    int cnt = 0;
+    rep(i, 0, n) {
+        rep(j, 0, m) {
+            cin >> v[i][j];
+            if (v[i][j] >= k) cnt++;
+        }
+    }
+    rep(i, 0, n) {
+        rep(j, 0, m) {
+            res[i][j] = v[i][j];
+            if (i - 1 >= 0) res[i][j] += res[i - 1][j];
+            if (j - 1 >= 0) res[i][j] += res[i][j - 1];
+            if (i - 1 >= 0 && j - 1 >= 0) {
+                res[i][j] -= res[i - 1][j - 1];
+            }
+        }
+    }
+    int p = min(n, m);
+    for (int i = n - 1; i >= 0; i--) {
+        for (int j = m - 1; j >= 0; j--) {
+            int temp = res[i][j];
+
+            for (int i = 0; i < n - p; i++) {
+            }
+            for (int i = p - 1; i >= 0; i--) {
+                
+            }
+        }
+    }
+
     return;
 }
 

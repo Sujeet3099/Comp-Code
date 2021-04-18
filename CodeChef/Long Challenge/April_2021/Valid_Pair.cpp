@@ -26,8 +26,13 @@ using namespace std;
 #define MOD 1000000007
 
 void solve() {
-    ll n;
-    cin >> n;
+    int a, b, c;
+    cin >> a >> b >> c;
+    if (a == b || b == c || a == c)
+        cout << "YES" << '\n';
+    else
+        cout << "NO" << '\n';
+
     return;
 }
 
@@ -37,7 +42,7 @@ int main() {
     clock_t start = clock();
 
     ll test = 1;
-    cin >> test;
+    // cin >> test;
     while (test--) solve();
 
     clock_t end = clock();

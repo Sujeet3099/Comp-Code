@@ -26,8 +26,23 @@ using namespace std;
 #define MOD 1000000007
 
 void solve() {
-    ll n;
-    cin >> n;
+    int n, k;
+    cin >> n >> k;
+    string s;
+    cin >> s;
+    int cnt = 0;
+    repA(i, s) {
+        if (i == '*') {
+            cnt++;
+            if (cnt == k) {
+                cout << "YES\n";
+                return;
+            }
+        } else {
+            cnt = 0;
+        }
+    }
+    cout << "NO\n";
     return;
 }
 

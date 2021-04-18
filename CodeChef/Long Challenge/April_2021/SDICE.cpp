@@ -28,7 +28,27 @@ using namespace std;
 void solve() {
     ll n;
     cin >> n;
-    return;
+    if (n <= 4) {
+        if (n == 0) cout << 0 << '\n';
+        if (n == 1) cout << 20 << '\n';
+        if (n == 2) cout << 36 << '\n';
+        if (n == 3) cout << 51 << '\n';
+        if (n == 4) cout << 60 << '\n';
+        return;
+    }
+    ll res = (n / 4) * 44;
+    ll rem = n % 4;
+    if (rem == 3) {
+        res += (4 + 51);
+    } else if (rem == 2) {
+        res += (8 + 36);
+    } else if (rem == 1) {
+        res += (12 + 20);
+    } else if (rem == 0) {
+        res -= 44;
+        res += 60;
+    }
+    cout << res << endl;
 }
 
 int main() {
@@ -47,3 +67,5 @@ int main() {
 /**
  * Test Cases:-
  */
+// 5
+// 0 1 2 3 4 5

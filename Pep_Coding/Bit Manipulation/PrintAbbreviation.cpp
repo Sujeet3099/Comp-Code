@@ -25,9 +25,21 @@ using namespace std;
 
 #define MOD 1000000007
 
-void solve() {
-    ll n;
-    cin >> n;
+void solve(string s) {
+    for(int i = 0; i < (1<<(s.size()));i++){
+        int c = 0;
+        for(int j =0 ; j< s.size();j++){
+            if(i & (1<<j)){
+                c++;
+            }else{
+                if(c)   cout<<c;
+                cout<<s[j];
+                c = 0;
+            }
+        }
+        if(c)   cout<<c;
+        cout<<'\n';
+    }
     return;
 }
 
@@ -36,9 +48,8 @@ int main() {
     cin.tie(NULL);
     clock_t start = clock();
 
-    ll test = 1;
-    cin >> test;
-    while (test--) solve();
+    string s;cin>>s;
+    solve(s);
 
     clock_t end = clock();
     cerr << fixed << setprecision(15) << ((double)(end - start)) / CLOCKS_PER_SEC;

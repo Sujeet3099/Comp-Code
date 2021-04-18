@@ -43,7 +43,7 @@ void solve() {
             un2 ^= v[i];
     }
     if (un1 > un2) swap(un1, un2);
-    cout << un1 << '\n'
+    cout << un1 << '\n' 
          << un2;
     return;
 }

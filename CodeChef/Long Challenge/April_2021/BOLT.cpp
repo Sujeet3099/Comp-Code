@@ -26,8 +26,14 @@ using namespace std;
 #define MOD 1000000007
 
 void solve() {
-    ll n;
-    cin >> n;
+    double k1, k2, k3, v;
+    cin >> k1 >> k2 >> k3 >> v;
+    double time = round(100 / (k1 * k2 * k3 * v) * 100) / 100;
+    // cout << time << ' ';
+    if (time < 9.58)
+        cout << "YES\n";
+    else
+        cout << "NO\n";
     return;
 }
 
