@@ -25,14 +25,51 @@ using namespace std;
 
 #define MOD 1000000007
 
-void solve() {
-    int n;cin>>n;
-    vi v(n);
-    rep(i,0,n)  cin>>v[i];
-    int res = 0;
-    rep(i,0,n)  res ^= v[i];
-    cout<<2*res;
-    return;
+string solve(string s, int k) {
+    vector<int> freq(26, 0);
+    for (int i = 0;
+         i < s.length(); i++) {
+        freq[s[i] - 'a']++;
+    }
+    string ans = "";
+    for (int i = 25; i >= 0;) {
+        if (freq[i] > k) {
+            int temp = k;
+            string st(1, i + 'a');
+            while (temp > 0) {
+                ans += st;
+                temp--;
+            }
+
+            freq[i] -= k;
+
+            int j = i - 1;
+            while (freq[j] <= 0 && j >= 0) {
+                j--;
+            }
+
+            if (freq[j] > 0 && j >= 0) {
+                string str(1, j + 'a');
+                ans += str;
+                freq[j] -= 1;
+            } else {
+                break;
+            }
+        }
+
+        else if (freq[i] > 0) {
+            int temp = freq[i];
+            freq[i] -= temp;
+            string st(1, i + 'a');
+            while (temp > 0) {
+                ans += st;
+                temp--;
+            }
+        } else {
+            i--;
+        }
+    }
+    return ans;
 }
 
 int main() {
@@ -42,7 +79,10 @@ int main() {
 
     ll test = 1;
     // cin >> test;
-    while (test--) solve();
+    string s;
+    int k;
+    cin >> s >> k;
+    while (test--) cout << solve(s, k);
 
     clock_t end = clock();
     cerr << fixed << setprecision(15) << ((double)(end - start)) / CLOCKS_PER_SEC;
