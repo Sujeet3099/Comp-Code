@@ -1,0 +1,24 @@
+Better Comments (Aaron Bond)
+Bracket Pair Colorizer (CoenraadS)
+CodeSnap (adpyke)
+ES7 React/Redux/GraphQL/React-Native snippets (dsznajder)
+ESLint (Dirk Baeumer)
+File Utils (Steffen Leistner)
+Live Server (Ritwick Dey)
+LIve Share (Microsoft)
+Path Intellisense (Christian Kohler)
+Project Manager (Alessandro Fragnani)
+Visual Studio Intellicode (Microsoft)
+Import cost (Wix)
+Community Material Theme (Mattia Astorino)
+CodeSandbox Theme (Nicolas Gryman)
+Auto Rename Tag (Jun Han)
+
+C/C++
+CodeRunner (Jun Han)
+
+
+
+DotENV (Mikestead)
+EdditorConfig for VS Code (Editor Config)
+Auto Import - ES^,TS,JSX,TSX (Sergey Korenuk)
