@@ -25,10 +25,31 @@ using namespace std;
 
 #define MOD 1000000007
 
+int mx2 = -1;
+
+void secMax(vi v, int i) {
+    static int mx = 0;
+    if (i == v.size()) {
+        return;
+    }
+    mx = max(v[i], mx);
+    secMax(v, i + 1);
+    if (mx - v[i] < mx - mx2 && mx - v[i] != 0) {
+        mx2 = v[i];
+    }
+}
+
 void solve() {
     int n;
     cin >> n;
-   
+    vi v(n);
+    rep(i, 0, n) cin >> v[i];
+    secMax(v, 0);
+    if (mx2 == -1) {
+        cout << "Second Max Doesn't Exist.";
+        return;
+    }
+    cout << mx2;
     return;
 }
 

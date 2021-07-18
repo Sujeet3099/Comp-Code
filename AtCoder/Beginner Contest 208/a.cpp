@@ -26,9 +26,14 @@ using namespace std;
 #define MOD 1000000007
 
 void solve() {
-    int n;
-    cin >> n;
-   
+    ll n, m;
+    cin >> n >> m;
+    vi v(n);
+    cout << n << ' ' << m << '\n';
+    rep(i, 0, n) cin >> v[i];
+
+    repA(i, v) cout << i << ' ';
+
     return;
 }
 

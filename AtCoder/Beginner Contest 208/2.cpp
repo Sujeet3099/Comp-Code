@@ -25,10 +25,38 @@ using namespace std;
 
 #define MOD 1000000007
 
+int fact(int n) {
+    int res = 1;
+    int i = n;
+    while (i--) {
+        res *= n;
+        n--;
+    }
+    return res;
+}
+
 void solve() {
-    int n;
-    cin >> n;
-   
+    int p;
+    cin >> p;
+    int i = 10;
+    int cnt = 0, coin = 0;
+    while (true) {
+        if (p == fact(i) && coin <= 100) {
+            cnt++;
+            cout << cnt;
+            return;
+        } else if (fact(i) < p && coin <= 100) {
+            cnt++;
+            coin++;
+            p -= fact(i);
+        } else if (fact(i) > p) {
+            i--;
+            coin = 0;
+        } else if (p == 0) {
+            cout << cnt;
+            return;
+        }
+    }
     return;
 }
 

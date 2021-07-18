@@ -25,10 +25,59 @@ using namespace std;
 
 #define MOD 1000000007
 
+// long taskOfPairing(vector<long> freq) {
+//     int n = freq.size();
+//     long sum = 0;
+//     for (int i = 0; i < n; i++) {
+//         if (freq[i] == 1) {
+//             if (i > 0) {
+//                 if (freq[i - 1] == 1) {
+//                     sum++;
+//                     cout << i << ' ' << i - 1 << ' ' << sum << "==\n";
+//                     freq[i] = 0;
+//                     freq[i - 1] = 0;
+//                 }
+//             }
+//         } else if (freq[i] >= 2) {
+//             sum += (long)(freq[i] / 2);
+//             if (freq[i] % 2 == 0)
+//                 freq[i] = 0;
+//             else {
+//                 if (i > 0) {
+//                     if (freq[i - 1] == 1) {
+//                         sum++;
+//                         cout << i << ' ' << i - 1 << ' ' << sum << "-->\n";
+//                         freq[i - 1] = 0;
+//                         freq[i] = 0;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     return sum;
+// }
+
+// void solve() {
+// int n;
+// cin >> n;
+// vector<long> v(n);
+// rep(i, 0, n) cin >> v[i];
+// cout << taskOfPairing(v);
+// }
+
 void solve() {
-    ll n;
+    int n;
     cin >> n;
-    return;
+    vector<int> v(n);
+    int cnt = 0;
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+        if (!(v[i] & 1) && v[i] & 2) {
+            cnt++;
+            cout << v[i] << '\n';
+        }
+    }
+    cout << cnt;
 }
 
 int main() {
@@ -37,7 +86,7 @@ int main() {
     clock_t start = clock();
 
     ll test = 1;
-    cin >> test;
+    // cin >> test;
     while (test--) solve();
 
     clock_t end = clock();

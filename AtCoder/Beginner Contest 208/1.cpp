@@ -26,9 +26,21 @@ using namespace std;
 #define MOD 1000000007
 
 void solve() {
-    int n;
-    cin >> n;
-   
+    int a,b;
+    cin>>a>>b;
+    int c = b/6;
+    int d = b%6;
+    if(b == 0){
+      cout<<"No";
+      return;
+    }
+    if(b<a){
+      cout<<"No";
+      return;
+    }
+    if(c<a) cout<<"Yes"<<endl;
+    else if(c==a && b%6==0)  cout<<"Yes"<<endl;
+    else cout<<"No";
     return;
 }
 

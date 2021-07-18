@@ -26,9 +26,34 @@ using namespace std;
 #define MOD 1000000007
 
 void solve() {
-    int n;
-    cin >> n;
-   
+    ll n, k;
+    cin >> n >> k;
+    vll v(n);
+    map<ll, int> mp;
+
+    rep(i, 0, n) {
+        cin >> v[i];
+        // mp.push({v[i], i});
+        mp[v[i]] = i;
+        // mp.insert({v[i], i});
+    }
+
+    sort(all(v));
+
+    ll num = k / n;
+    ll extra = k % n;
+
+    // ll cnt = 0;
+    vll res(n);
+    rep(i, 0, n) res[i] = num;
+
+    int z = 0;
+    while (extra-- > 0) {
+        res[mp[v[z]]] += 1;
+        z++;
+    }
+
+    repA(i, res) cout << i << '\n';
     return;
 }
 
