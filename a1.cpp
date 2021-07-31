@@ -26,20 +26,8 @@ using namespace std;
 #define MOD 1000000007
 
 void solve() {
-    int n, k, x;
-    cin >> n >> k >> x;
-    map<int, int> mp;
-    int temp;
-    for (int i = 0; i < n; i++) {
-        cin >> temp;
-        mp[temp]++;
-    }
-    int res = mp.size() - k;
-    if (res <= 0) {
-        cout << 0 << '\n';
-    } else {
-        cout << res * x << '\n';
-    }
+    int n;
+    cin >> n;
     return;
 }
 
@@ -52,8 +40,8 @@ int main() {
     // cin >> test;
     // while (test--) solve();
     const int k = 10;
-    int *const  q = &k;
-    printf("%d",*q);
+    int *const q = &k;
+    printf("%d", *q);
 
     clock_t end = clock();
     cerr << fixed << setprecision(15) << ((double)(end - start)) / CLOCKS_PER_SEC;
