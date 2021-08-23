@@ -26,22 +26,17 @@ using namespace std;
 #define MOD 1000000007
 
 void solve() {
-    int n;
-    cin >> n;
-    return;
+        return;
 }
 
 int main() {
-    // ios_base::sync_with_stdio(false);
-    // cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     clock_t start = clock();
 
-    // ll test = 1;
-    // cin >> test;
-    // while (test--) solve();
-    const int k = 10;
-    int *const q = &k;
-    printf("%d", *q);
+    ll test = 1;
+    cin >> test;
+    while (test--) solve();
 
     clock_t end = clock();
     cerr << fixed << setprecision(15) << ((double)(end - start)) / CLOCKS_PER_SEC;
